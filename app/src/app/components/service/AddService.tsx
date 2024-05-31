@@ -25,18 +25,18 @@ export const AddService = ({
 
   return (
     <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-      <Modal.Header>Add a New Service</Modal.Header>
+      <Modal.Header>Add a New Community</Modal.Header>
       <Modal.Body>
         <div className="space-y-6">
           <div>
             <div className="mb-2 block">
-              <Label>Dashboard Id</Label>
+              <Label>Community Id</Label>
             </div>
             <TextInput id="dashboardId" value={dashboardId} disabled />
           </div>
           <div>
             <div className="mb-2 block">
-              <Label>Service Name</Label>
+              <Label>Community Name</Label>
             </div>
             <TextInput
               id="serviceName"
@@ -53,6 +53,7 @@ export const AddService = ({
             setOpenModal(false);
             onCreateService(serviceName);
           }}
+          style={{ background: "#51C68E" }}
         >
           Submit
         </Button>

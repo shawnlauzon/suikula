@@ -1,13 +1,13 @@
 "use client";
 
 import React, { ChangeEvent, useState, useCallback } from "react";
-import { Services } from "../components/Services";
+import { Services } from "../../components/Services";
 import { useWalletKit } from "@mysten/wallet-kit";
 import { SuiMoveObject } from "@mysten/sui.js";
 import { TransactionBlock } from "@mysten/sui.js/transactions";
-import { useServiceCreation } from "../hooks/useServiceCreation";
-import { useDashboardRegisterService } from "../hooks/useDashboardRegisterService";
-import { useSignAndExecuteTransaction } from "../hooks/useSignAndExecuteTransaction";
+import { useServiceCreation } from "../../hooks/useServiceCreation";
+import { useDashboardRegisterService } from "../../hooks/useDashboardRegisterService";
+import { useSignAndExecuteTransaction } from "../../hooks/useSignAndExecuteTransaction";
 import { AddService } from "@/app/components/service/AddService";
 import { Button } from "flowbite-react";
 import { HiOutlinePlusCircle } from "react-icons/hi";
@@ -40,7 +40,7 @@ const ServiceOwnerPage = () => {
 
   return (
     <div className="flex flex-col mx-32 my-10">
-      <h1>Join Communities</h1>
+      <h1>Your Communities</h1>
       <Services />
       <Button
         style={{ backgroundColor: "#51C68E" }}
