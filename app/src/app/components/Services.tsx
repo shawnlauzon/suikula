@@ -16,7 +16,7 @@ export const Services = ({ isDetailed }: Props) => {
   const { suiClient } = useSui();
   const router = useRouter();
   const { serviceList, isLoading, currentAccount } = useGetServices(
-    process.env.NEXT_PUBLIC_DASHBOARD_ID as string,
+    process.env.NEXT_PUBLIC_DASHBOARD_ID as string
   );
 
   const [services, setServices] = useState([] as ServiceType[]);
@@ -63,22 +63,22 @@ export const Services = ({ isDetailed }: Props) => {
       {services.length > 0 && (
         <Table hoverable className="items-center text-center">
           <Table.Head>
-            <Table.HeadCell>Rating</Table.HeadCell>
+            {/* <Table.HeadCell>Rating</Table.HeadCell> */}
             <Table.HeadCell>Name</Table.HeadCell>
             <Table.HeadCell>Service ID</Table.HeadCell>
             <Table.HeadCell>Action</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
-            {services.map((item) => (
+            {services?.reverse()?.map((item) => (
               <Table.Row
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
                 key={item.id}
               >
-                <Table.Cell>
+                {/* <Table.Cell>
                   <div className="w-52">
                     <RatingStar stars={item.stars}></RatingStar>
                   </div>
-                </Table.Cell>
+                </Table.Cell> */}
                 <Table.Cell>
                   <div className="w-32">{item.name}</div>
                 </Table.Cell>

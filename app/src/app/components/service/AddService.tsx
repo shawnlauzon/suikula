@@ -25,7 +25,7 @@ export const AddService = ({
 
   return (
     <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-      <Modal.Header>Add a New Community</Modal.Header>
+      <Modal.Header>Join Community</Modal.Header>
       <Modal.Body>
         <div className="space-y-6">
           <div>
@@ -36,7 +36,7 @@ export const AddService = ({
           </div>
           <div>
             <div className="mb-2 block">
-              <Label>Community Name</Label>
+              <Label>Your Name</Label>
             </div>
             <TextInput
               id="serviceName"

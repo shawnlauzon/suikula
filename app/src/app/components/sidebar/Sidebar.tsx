@@ -28,43 +28,29 @@ export const MySidebar = () => {
           <Sidebar.Items>
             {user.role === "serviceOwner" && (
               <Sidebar.ItemGroup>
+                <Sidebar.Item href="/serviceOwner" icon={HiChartPie}>
+                  Consensus 2024
+                </Sidebar.Item>
                 <Sidebar.Item
-                  href="/serviceOwner"
+                  href="/serviceOwner/ownedServices"
                   icon={HiUser}
+                  // label="Owner"
                   labelColor="dark"
                 >
-                  Join Communities
+                  Experiences
                 </Sidebar.Item>
-                <Sidebar.Item
-                  href="/serviceOwner/yourCommunities"
-                  icon={HiUser}
-                  labelColor="dark"
-                >
-                  Your Communities
-                </Sidebar.Item>
-                <Sidebar.Item href="/serviceOwner/addReviews" icon={HiChartPie}>
-                  Add Reviews
-                </Sidebar.Item>
-                <Sidebar.Item
-                  href="/serviceOwner/listReviews"
-                  icon={HiChartPie}
-                >
-                  Reviews
-                </Sidebar.Item>
-
                 {/* <Sidebar.Item
                   href="/serviceOwner/topUp"
                   icon={HiCurrencyDollar}
-                  // label="Owner"
+                  label="Owner"
                   labelColor="dark"
                 >
                   Top Up
-                </Sidebar.Item> */}
-
-                {/* <Sidebar.Item
+                </Sidebar.Item>
+                <Sidebar.Item
                   href="/serviceOwner/reward"
                   icon={HiCake}
-                  // label="Owner"
+                  label="Owner"
                   labelColor="dark"
                 >
                   Reward
@@ -72,7 +58,7 @@ export const MySidebar = () => {
               </Sidebar.ItemGroup>
             )}
 
-            {/* {true && (
+            {user.role === "user" && (
               <Sidebar.ItemGroup>
                 <Sidebar.Item href="/user" icon={HiChartPie}>
                   Top Reviews
@@ -84,9 +70,9 @@ export const MySidebar = () => {
                   Recently Visited
                 </Sidebar.Item>
               </Sidebar.ItemGroup>
-            )} */}
+            )}
 
-            {/* {true && (
+            {user.role === "moderator" && (
               <Sidebar.ItemGroup>
                 <Sidebar.Item href="/moderator" icon={HiStar}>
                   Services
@@ -108,7 +94,7 @@ export const MySidebar = () => {
                   Delete
                 </Sidebar.Item>
               </Sidebar.ItemGroup>
-            )} */}
+            )}
 
             <Sidebar.ItemGroup>
               <Sidebar.Item onClick={handleLogout} icon={HiArrowSmLeft}>

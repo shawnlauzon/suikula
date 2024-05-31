@@ -15,6 +15,7 @@ const OwnedServicesPage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [serviceId, setServiceId] = useState("");
   const [recipient, setRecipient] = useState("");
+  const [description, setDescription] = useState("");
   const [alertMsg, setAlertMsg] = useState("");
 
   const onGeneratePOE = () => {
@@ -25,6 +26,10 @@ const OwnedServicesPage = () => {
     }
     if (recipient.length === 0) {
       setAlertMsg(`Enter a valid recipient address`);
+      return;
+    }
+    if (description.length === 0) {
+      setAlertMsg(`Enter a valid description`);
       return;
     }
     console.log("adminCaps=" + JSON.stringify(dataAdminCaps));
@@ -39,11 +44,9 @@ const OwnedServicesPage = () => {
           {`  ${alertMsg}`}
         </Alert>
       )}
-      <h1>Customer (Proof of Experience)</h1>
+      <h1>Proof of Experience</h1>
       <p className="my-4 text-lg text-gray-500">
-        Generate an NFT for a customer after the customer pays for the service.
-        The customer may burn the NFT later when writing a review for the
-        service and receive a high score for the review.
+        Generate an NFT for a community member who has gifted you their time.
       </p>
 
       <div className="container">
@@ -105,6 +108,21 @@ const OwnedServicesPage = () => {
                   placeholder=""
                   value={recipient}
                   onChange={(event) => setRecipient(event.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <div className="mb-2 block">
+                  <Label
+                    htmlFor="description"
+                    value="Describe your experience"
+                  />
+                </div>
+                <TextInput
+                  id="description"
+                  placeholder=""
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
                   required
                 />
               </div>

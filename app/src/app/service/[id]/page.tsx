@@ -44,7 +44,7 @@ export default function Service() {
         return;
       }
       console.dir(
-        `reviews: ${JSON.stringify(dataReviews)} size=${dataReviews.length}`,
+        `reviews: ${JSON.stringify(dataReviews)} size=${dataReviews.length}`
       );
 
       const reviewsPromises = dataReviews.map(async (item: string) => {
@@ -73,7 +73,7 @@ export default function Service() {
 
   const createReview = async (
     reviewBody: string,
-    overallRate: string,
+    overallRate: string
   ): Promise<void> => {
     const tx = new TransactionBlock();
 
@@ -108,7 +108,8 @@ export default function Service() {
 
   return (
     <div className="flex flex-col mx-32 my-10">
-      <h1>Top Reviews</h1>
+      {/* <h1>Top Reviews</h1> */}
+      <h1>{`${dataName} reviews`}</h1>
       <div>Name: {`${dataName}`}</div>
       <div>Id: {`${id}`}</div>
       <div>Total: {`${reviews.length}`}</div>

@@ -40,14 +40,14 @@ const ServiceOwnerPage = () => {
 
   return (
     <div className="flex flex-col mx-32 my-10">
-      <h1>Join Communities</h1>
+      <h1>Members</h1>
       <Services />
       <Button
         style={{ backgroundColor: "#51C68E" }}
         pill
         onClick={() => setOpenModal(true)}
       >
-        Join a new community
+        Join this community
         <HiOutlinePlusCircle className="ml-2 h-5 w-5" />
       </Button>
       <AddService
