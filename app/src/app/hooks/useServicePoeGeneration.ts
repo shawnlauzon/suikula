@@ -11,6 +11,7 @@ export const useServicePoEGeneration = () => {
     adminCap: string,
     serviceId: string,
     recipient: string,
+    description: string,
   ) => {
     const tx = new TransactionBlock();
     tx.moveCall({
@@ -19,6 +20,7 @@ export const useServicePoEGeneration = () => {
         tx.object(adminCap),
         tx.object(serviceId),
         tx.pure(recipient),
+        tx.pure(description),
       ],
     });
     tx.setGasBudget(1000000000);
