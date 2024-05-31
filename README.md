@@ -1,5 +1,7 @@
 # SuiKula
 
+A D-App built on the SUI blockchain to enable individuals to join local communities and interact with each other based on a gift economy model.
+
 ## Setup
 
 Clone the repository
