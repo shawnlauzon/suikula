@@ -10,7 +10,7 @@ Clone the repository
 git clone https://github.com/shawnlauzon/suikula.git
 ```
 
-Install the dependencies
+Move into /app folder and install the dependencies
 
 ```bash
 yarn install
