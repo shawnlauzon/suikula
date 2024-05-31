@@ -58,7 +58,7 @@ const OwnedServicesPage = () => {
               <Table.HeadCell>Action</Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
-              {dataServices.map((item) => (
+              {dataServices?.reverse()?.map((item) => (
                 <Table.Row
                   className="bg-white dark:border-gray-700 dark:bg-gray-800"
                   key={item.id}
