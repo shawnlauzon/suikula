@@ -15,7 +15,7 @@ export const useServiceCreation = () => {
     });
 
     tx.moveCall({
-      target: `${process.env.NEXT_PUBLIC_PACKAGE}::dashboard::register_service`,
+      target: `${process.env.NEXT_PUBLIC_PACKAGE}::community::register_service`,
       arguments: [tx.object(dashboardId), serviceCreation],
     });
     setIsLoading(true);

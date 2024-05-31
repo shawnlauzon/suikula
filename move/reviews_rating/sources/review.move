@@ -1,7 +1,7 @@
 // Copyright (c) Mysten Labs, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-module reviews_rating::review {
+module suikula::review {
     use std::string::String;
 
     use sui::clock::Clock;

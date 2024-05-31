@@ -9,7 +9,7 @@ export const useDashboardCreation = () => {
     ) => {
       const tx = new TransactionBlock();
       tx.moveCall({
-        target: `${process.env.NEXT_PUBLIC_PACKAGE}::dashboard::create_dashboard`,
+        target: `${process.env.NEXT_PUBLIC_PACKAGE}::community::create_community`,
         arguments: [
           tx.pure(service_type),
         ],

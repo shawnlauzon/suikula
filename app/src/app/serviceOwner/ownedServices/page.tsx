@@ -33,7 +33,7 @@ const OwnedServicesPage = () => {
       return;
     }
     console.log("adminCaps=" + JSON.stringify(dataAdminCaps));
-    handleServicePoEGeneration(adminCap.id.id, serviceId, recipient);
+    handleServicePoEGeneration(adminCap.id.id, serviceId, recipient, description);
   };
 
   return (

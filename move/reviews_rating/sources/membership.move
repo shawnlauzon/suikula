@@ -1,15 +1,15 @@
 // Copyright (c) Mysten Labs, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-module reviews_rating::moderator {
+module suikula::membership {
     use sui::tx_context::{sender};
 
-    /// Represents a moderator that can be used to delete reviews
+    /// Represents a membership that can be used to delete reviews
     public struct Moderator has key {
         id: UID,
     }
 
-    /// A capability that can be used to setup moderators
+    /// A capability that can be used to setup memberships
     public struct ModCap has key, store {
         id: UID
     }
@@ -21,21 +21,21 @@ module reviews_rating::moderator {
         transfer::transfer(mod_cap, sender(ctx));
     }
 
-    /// Adds a moderator
-    public fun add_moderator(
+    /// Adds a membership
+    public fun add_membership(
         _: &ModCap,
         recipient: address,
         ctx: &mut TxContext
     ) {
-        // generate an NFT and transfer it to moderator who may use it to delete reviews
+        // generate an NFT and transfer it to membership who may use it to delete reviews
         let mod = Moderator {
             id: object::new(ctx)
         };
         transfer::transfer(mod, recipient);
     }
 
-    /// Deletes a moderator
-    public fun delete_moderator(
+    /// Deletes a membership
+    public fun delete_membership(
         mod: Moderator
     ) {
         let Moderator { id } = mod;

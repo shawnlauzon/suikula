@@ -1,7 +1,7 @@
 // Copyright (c) Mysten Labs, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-module reviews_rating::service {
+module suikula::service {
     use std::string::String;
 
     use sui::balance::{Self, Balance};
@@ -11,8 +11,8 @@ module reviews_rating::service {
     use sui::sui::SUI;
     use sui::object_table::{Self, ObjectTable};
     
-    use reviews_rating::moderator::{Moderator};
-    use reviews_rating::review::{Self, Review};
+    use suikula::membership::{Moderator};
+    use suikula::review::{Self, Review};
 
     const EInvalidPermission: u64 = 1;
     const ENotEnoughBalance: u64 = 2;
@@ -38,9 +38,10 @@ module reviews_rating::service {
     }
 
     /// Represents a proof of experience that can be used to write a review with higher score
-    public struct ProofOfExperience has key {
+    public struct ProofOfExperience has key, store {
         id: UID,
         service_id: ID,
+        description: String
     }
 
     /// Represents a review record
@@ -89,7 +90,7 @@ module reviews_rating::service {
         ctx: &mut TxContext
     ) {
         assert!(poe.service_id == service.id.to_inner(), EInvalidPermission);
-        let ProofOfExperience { id, service_id: _ } = poe;
+        let ProofOfExperience { id, service_id: _, description: _ } = poe;
         object::delete(id);
         let review = review::new_review(
             owner,
@@ -229,18 +230,20 @@ module reviews_rating::service {
         cap: &AdminCap,
         service: &Service,
         recipient: address,
+        description: String,
         ctx: &mut TxContext
     ) {
         // generate an NFT and transfer it to customer who can use it to write a review with higher score
         assert!(cap.service_id == service.id.to_inner(), EInvalidPermission);
         let poe = ProofOfExperience {
             id: object::new(ctx),
-            service_id: cap.service_id
+            service_id: cap.service_id,
+            description: description
         };
         transfer::transfer(poe, recipient);
     }
 
-    /// Removes a review (only moderators can do this)
+    /// Removes a review (only memberships can do this)
     public fun remove_review(
         _: &Moderator,
         service: &mut Service,
