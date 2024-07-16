@@ -3,23 +3,23 @@
 
 module suikula::community {
     use std::string::String;
-
+    
     use sui::dynamic_field as df;
 
     /// Community is a collection of services
     public struct Community has key, store {
         id: UID,
-        service_type: String
+        community_name: String
     }
 
     /// Create a new community
     public fun create_community(
-        service_type: String,
+        community_name: String,
         ctx: &mut TxContext,
     ) {
         let db = Community {
             id: object::new(ctx),
-            service_type
+            community_name
         };
         transfer::share_object(db);
     }
