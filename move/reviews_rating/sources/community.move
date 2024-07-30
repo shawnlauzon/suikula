@@ -6,7 +6,16 @@ module suikula::community {
     
     use sui::dynamic_field as df;
 
-    /// Community is a collection of services
+    public struct AdminCap has key { id: UID }
+
+    public struct GiftCap has key { id: UID }
+
+    fun init(ctx: &mut TxContext) {
+        transfer::transfer(AdminCap {
+            id: object::new(ctx)
+        }, ctx.sender())
+    }
+    /// Kula
     public struct Community has key, store {
         id: UID,
         community_name: String
@@ -14,6 +23,7 @@ module suikula::community {
 
     /// Create a new community
     public fun create_community(
+        _: &AdminCap,
         community_name: String,
         ctx: &mut TxContext,
     ) {
@@ -24,7 +34,10 @@ module suikula::community {
         transfer::share_object(db);
     }
 
-    public fun register_service(db: &mut Community, service_id: ID) {
+    public fun register_member(_: &AdminCap, db: &mut Community, service_id: ID, recipient: address, ctx: &mut TxContext) {
+        transfer::transfer(GiftCap {
+            id: object::new(ctx)
+        }, recipient);
         df::add(&mut db.id, service_id, service_id);
     }
 }
